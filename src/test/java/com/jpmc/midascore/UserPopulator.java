@@ -5,6 +5,9 @@ import com.jpmc.midascore.entity.UserRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 @Component
 public class UserPopulator {
     @Autowired

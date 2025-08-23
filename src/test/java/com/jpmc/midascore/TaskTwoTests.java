@@ -1,5 +1,4 @@
 package com.jpmc.midascore;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +31,7 @@ class TaskTwoTests {
         logger.info("----------------------------------------------------------");
         logger.info("use your debugger to watch for incoming transactions");
         logger.info("kill this test once you find the answer");
+
         while (true) {
             Thread.sleep(20000);
             logger.info("...");
