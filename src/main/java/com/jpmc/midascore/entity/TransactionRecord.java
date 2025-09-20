@@ -7,18 +7,18 @@ public class TransactionRecord {
 
     @Id
     @GeneratedValue
-    private  int id;
+    private long id;
 
     @Column(nullable = false)
-    private int amount;
+    private float amount;
 
     @JoinColumn(name = "transactionsRecord_id", nullable = false)
     @ManyToOne
-    private int receiver_id;
+    private long receiver_id;
 
     @JoinColumn(name = "transactionsRecord_id", nullable = false)
     @ManyToOne
-    private int sender_id;
+    private long sender_id;
 
 
 }
