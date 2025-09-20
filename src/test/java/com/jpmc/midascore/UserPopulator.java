@@ -22,6 +22,7 @@ public class UserPopulator {
             String[] userData = userLine.split(", ");
             UserRecord user = new UserRecord(userData[0], Float.parseFloat(userData[1]));
             databaseConduit.save(user);
+            //should i update this table after each transation?
         }
     }
 }
