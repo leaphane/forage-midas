@@ -20,5 +20,13 @@ public class TransactionRecord {
     @ManyToOne
     private long sender_id;
 
+    public TransactionRecord(float amount, long receiver_id, long sender_id){
+
+        this.amount = amount;
+        this.receiver_id  = receiver_id;
+        this.sender_id = sender_id;
+
+    }
+
 
 }
