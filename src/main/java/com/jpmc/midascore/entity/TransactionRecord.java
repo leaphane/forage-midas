@@ -1,7 +1,11 @@
 package com.jpmc.midascore.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.catalina.User;
 
+@Getter
 @Entity
 public class TransactionRecord {
 
@@ -9,22 +13,25 @@ public class TransactionRecord {
     @GeneratedValue
     private long id;
 
+    @Setter
     @Column(nullable = false)
     private float amount;
 
-    @JoinColumn(name = "transactionsRecord_id", nullable = false)
+    @Setter
+    @JoinColumn(name = "receiver_id", nullable = false)
     @ManyToOne
-    private long receiver_id;
+    private UserRecord receiver;
 
-    @JoinColumn(name = "transactionsRecord_id", nullable = false)
+    @JoinColumn(name = "sender_id", nullable = false)
     @ManyToOne
-    private long sender_id;
+    @Setter
+    private UserRecord sender;
 
-    public TransactionRecord(float amount, long receiver_id, long sender_id){
+    public TransactionRecord(float amount, UserRecord receiver, UserRecord sender){
 
         this.amount = amount;
-        this.receiver_id  = receiver_id;
-        this.sender_id = sender_id;
+        this.receiver = receiver;
+        this.sender = sender;
 
     }
 

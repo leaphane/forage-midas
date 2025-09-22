@@ -2,9 +2,12 @@ package com.jpmc.midascore.entity;
 
 import com.jpmc.midascore.foundation.Transaction;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
 @Entity
 public class UserRecord {
 
@@ -15,14 +18,15 @@ public class UserRecord {
     @Column(nullable = false)
     private String name;
 
+    @Setter
     @Column(nullable = false)
     private float balance;
 
-    @OneToMany(mappedBy = "receiver_id")
-    List<Transaction> transactions_received;
+    @OneToMany(mappedBy = "receiver")
+    List<TransactionRecord> transactions_received;
 
-    @OneToMany(mappedBy = "sender_id")
-    List<Transaction> transactions_sent;
+    @OneToMany(mappedBy = "sender")
+    List<TransactionRecord> transactions_sent;
 
     protected UserRecord() {
     }
@@ -41,15 +45,4 @@ public class UserRecord {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public float getBalance() {
-        return balance;
-    }
-
-    public void setBalance(float balance) {
-        this.balance = balance;
-    }
 }
