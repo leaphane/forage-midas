@@ -13,6 +13,9 @@ public class SimpleConsumer {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private UserApiClient userApiClient;
+
 
     @KafkaListener(topics = "${general.kafka-topic}", groupId = "group1")
     public void consume(String transaction){
@@ -31,13 +34,16 @@ public class SimpleConsumer {
         if(user_sender.getBalance() >= transaction1.getAmount()){
 
             user_sender.setBalance(user_sender.getBalance() - transaction1.getAmount());
-            user_receiver.setBalance(user_receiver.getBalance() + transaction1.getAmount());
+            user_receiver.setBalance(user_receiver.getBalance() + transaction1.getAmount() + userApiClient.postRequest(transaction1));
             userRepo.save(user_receiver);
             userRepo.save(user_sender);
 
         }
         System.out.println(user_sender.getBalance());
         System.out.println(user_receiver.getBalance());
+        System.out.println("incentives");
+        System.out.println(userApiClient.postRequest(transaction1));
+
 
     }
 
