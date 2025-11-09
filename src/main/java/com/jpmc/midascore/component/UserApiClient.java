@@ -1,6 +1,4 @@
 package com.jpmc.midascore.component;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.jpmc.midascore.foundation.Transaction;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
